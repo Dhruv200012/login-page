@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Sign-Up Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .form-group {
+            margin-bottom: 10px;
+        }
+        .form-group label {
+            display: bleck;             
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            padding: 8px;
+            width: 300px;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .buttons button {
+            padding: 10px 15px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    
+<h1>Sign-Up Form  &#128172;</h1>
+
+<form id="signUpForm">
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+    </div>
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+    </div>
+        
+    <div id="dynamicFields"></div>
+    <div class="buttons">
+        <button type="button" onclick="addField()">Add Field</button>
+        <button type="button" onclick="removeField()">Remove Field</button>
+        <button type="submit">Submit</button>
+        <button type="delete">Delete</button>
+    </div>
+</form> 
+<script>
+    function addField() {
+        // Create a new div element for the new field
+        const newFieldDiv = document.createElement('div');
+        newFieldDiv.classList.add('form-group');
+        
+        // Create a label for the new field
+        const newLabel = document.createElement('label');
+        newLabel.textContent = 'Additional Field:';
+        newFieldDiv.appendChild(newLabel);
+
+        // Create an input for the new field
+        const newInput = document.createElement('input');
+        newInput.type = 'text';
+        newInput.name = 'additionalField';
+        newFieldDiv.appendChild(newInput);
+
+        // Append the new field div to the dynamicFields div
+        document.getElementById('dynamicFields').appendChild(newFieldDiv);
+    }
+    
+    function removeField() {
+        // Get the dynamicFields div
+        const dynamicFields = document.getElementById('dynamicFields');
+
+        // Remove the last child of the dynamicFields div
+        if (dynamicFields.lastChild) {
+            dynamicFields.removeChild(dynamicFields.lastChild);
+        }
+    }    
+</script>
+
+</body>
+</html>
